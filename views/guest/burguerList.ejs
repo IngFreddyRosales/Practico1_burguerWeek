@@ -5,7 +5,7 @@
             <% if (burguers && burguers.length> 0){ %>
                 <div class="row">
                     <% burguers.forEach(burguer=> { %>
-                        <div class="col-md-4 mb-4 ">
+                        <div class="col-12 col-md-4 mb-4">
                             <div class="card shadow-sm">
                                 <img src="<%= burguer.image %>" alt="<%= burguer.name %>" class="card-img-top"
                                     style="max-height: 200px; object-fit: cover;">
@@ -13,7 +13,7 @@
                                     <h5 class="card-title">
                                         <%= burguer.name %>
                                     </h5>
-                                    <div class="card-text">
+                                    <div class="card-text ">
                                         <p class="card-text">Descripción: <%= burguer.description %></p>
                                         <p class="card-text">Precio: <%= burguer.price %>Bs.</p>
                                     </div>

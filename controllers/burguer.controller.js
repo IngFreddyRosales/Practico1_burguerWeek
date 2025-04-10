@@ -10,7 +10,7 @@ const burguers = await Burguer.findAll({
     where: { restaurants_id: id },
     attributes: [
         'id', 'name', 'description', 'price', 'image', 'restaurants_id',
-        [sequelize.fn('SUM', sequelize.col('reviews.rating')), 'totalRating']
+        [sequelize.fn('ROUND', sequelize.fn('AVG', sequelize.col('reviews.rating')), 2), 'totalRating']
     ],
     include: [
         {

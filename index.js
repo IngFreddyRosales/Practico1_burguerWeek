@@ -13,7 +13,7 @@ app.set('view engine', 'ejs');
 const session = require('express-session');
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/image/restaurants', express.static(path.join(__dirname, '/public/image/restaurants'))); // esta linea sirve para servir archivos estaticos como css, js, imagenes, etc
+app.use('/image/restaurants', express.static(path.join(__dirname, '/public/image/restaurants'))); 
 app.use(express.static('public'))
 
 app.use(fileUpload({
