@@ -1,0 +1,29 @@
+<%- include('../components/headerAdmin') %>
+<div class="container mt-5">
+    <form action="/admin/restaurant/<%= burguer.restaurants_id %>/burguer/edit/<%= burguer.id %>" method="POST" enctype="multipart/form-data" class="mt-4">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nombre de la Hamburguesa</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Nombre de la hamburguesa"
+                value="<%= burguer.name %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Descripción</label>
+            <textarea id="description" name="description" class="form-control" rows="3"
+                placeholder="Descripción de la hamburguesa" required><%= burguer.description %></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Precio</label>
+            <input type="number" id="price" name="price" class="form-control"
+                placeholder="Precio de la hamburguesa" value="<%= burguer.price %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Imagen</label>
+            <input type="file" id="image" name="image" class="form-control">
+        </div>
+        <div class="d-grip gap-2">
+            <button type="submit" class="btn btn-primary">Editar Hamburguesa</button>
+        </div>
+
+    </form>
+
+<%- include('../../components/footer') %>

@@ -1,0 +1,50 @@
+<%- include('../components/header.ejs') %>
+    <div class="container mt-5">
+        <h3 class="text-center mb-4">Lista de Hamburguesas</h3>
+        <div class="burguer-list">
+            <% if (burguers && burguers.length> 0){ %>
+                <div class="row">
+                    <% burguers.forEach(burguer=> { %>
+                        <div class="col-md-4 mb-4 ">
+                            <div class="card shadow-sm">
+                                <img src="<%= burguer.image %>" alt="<%= burguer.name %>" class="card-img-top"
+                                    style="max-height: 200px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%= burguer.name %>
+                                    </h5>
+                                    <div class="card-text">
+                                        <p class="card-text">Descripción: <%= burguer.description %></p>
+                                        <p class="card-text">Precio: <%= burguer.price %>Bs.</p>
+                                    </div>
+                                    <div class="rating"></div>
+                                        <form action="/restaurant/<%= burguer.id %>/review" method="POST">
+                                            <label for="rating-<%= burguer.id %>">Calificación:</label>
+                                            <select name="rating" id="rating-<%= burguer.id %>" class="form-select" required>
+                                                <option value="1">1 estrella</option>
+                                                <option value="2">2 estrellas</option>
+                                                <option value="3">3 estrellas</option>
+                                                <option value="4">4 estrellas</option>
+                                                <option value="5">5 estrellas</option>
+                                            </select>
+
+                                            <div class="mt-2">
+                                                <input type="hidden" name="comment" value="false">
+                                                <input type="checkbox" id="comment-<%= burguer.id %>" name="comment" value="true" class="form-check-input">
+                                                <label for="comment-<%= burguer.id %>" class="form-check-label">Ya la probaste</label>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary mt-2 ">Enviar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                </div>
+                <% }else { %>
+                    <p class="text-center">No hay hamburguesas disponibles en este momento</p>
+                    <% }%>
+        </div>
+    </div>
+
+<%- include('../components/footer.ejs') %>

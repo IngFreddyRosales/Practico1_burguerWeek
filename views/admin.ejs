@@ -1,0 +1,35 @@
+<%- include('./admin/components/headerAdmin.ejs') %>
+<div class="container mt-5">
+    <h3 class="text-center mb-4">Lista de Restaurantes</h3>
+    <div class="restaurant-list">
+        <% if (restaurants && restaurants.length > 0) { %>
+            <div class="row">
+                <% restaurants.forEach(restaurant => { %>
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm">
+                            <img src="<%= restaurant.logo %>" alt="<%= restaurant.name %>" class="card-img-top" style="max-height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= restaurant.name %></h5>
+                                <div class="d-grid gap-2">
+                                    <a href="/admin/edit/<%= restaurant.id %>" class="btn btn-dark btn-lg ">Editar</a>
+                                    <a href="/admin/restaurant/<%= restaurant.id %>" class="btn btn-dark btn-lg">Ver Menú</a>
+                                    <a href="/admin/restaurant/<%= restaurant.id %>/create" class="btn btn-dark btn-lg">Crear Hamburguesa</a>
+                                    <div class="d-flex justify-content-center mt-3">
+                                        <form method="post" action="/admin/restaurant/delete/<%= restaurant.id %>" class="d-inline">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" class="btn btn-danger btn-lg">Eliminar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <p class="text-center">No hay restaurantes disponibles en este momento.</p>
+        <% } %>
+    </div>
+</div>
+<%- include('./components/footer.ejs') %>
+
